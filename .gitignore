@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual envs
+.venv/
+env/
+ENV/
+
+# OS junk
+.DS_Store
+
+# Raw data
+data/raw/
+data/processed/brazil_modeling.csv
+
+# Output clutter
+outputs/figures/
+outputs/metrics/
+
+# Keep empty folder structure if needed
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!outputs/figures/.gitkeep
+!outputs/metrics/.gitkeep
+!outputs/figures/milestone1/.gitkeep
+!outputs/figures/milestone2/.gitkeep
