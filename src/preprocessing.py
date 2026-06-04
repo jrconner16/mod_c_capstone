@@ -1,0 +1,50 @@
+"""Lightweight preprocessing helpers for project datasets."""
+
+BRAZIL_COLUMN_MAP = {
+    "Age": "age",
+    "Code.Profession": "profession_code",
+    "Code.of.Morphology": "morphology_code",
+    "Gender_FEMININO": "gender_female",
+    "Gender_IGNORADO": "gender_unknown",
+    "Gender_MASCULINO": "gender_male",
+    "Raca.Color_AMARELA": "race_color_yellow",
+    "Raca.Color_BRANCO": "race_color_white",
+    "Raca.Color_INDÍGENA": "race_color_indigenous",
+    "Raca.Color_PARDA": "race_color_brown",
+    "Raca.Color_PRETA": "race_color_black",
+    "Degree.of.Education_FUNDAMENTAL I (1ª A 4ª SÉRIE)": "education_elementary_1_to_4",
+    "Degree.of.Education_FUNDAMENTAL II (5ª A 8ª SÉRIE)": "education_elementary_5_to_8",
+    "Degree.of.Education_MÉDIO (ANTIGO SEGUNDO GRAU)": "education_secondary",
+    "Degree.of.Education_SEM ESCOLARIDADE": "education_no_schooling",
+    "Degree.of.Education_SUPERIOR COMPLETO": "education_college_complete",
+    "Degree.of.Education_SUPERIOR INCOMPLETO": "education_college_incomplete",
+    "State.Civil_CASADO": "marital_status_married",
+    "State.Civil_SEPARADO JUDICIALMENTE": "marital_status_legally_separated",
+    "State.Civil_SOLTEIRO": "marital_status_single",
+    "State.Civil_UNIÃO CONSENSUAL": "marital_status_common_law_union",
+    "State.Civil_VIÚVO": "marital_status_widowed",
+    "Indicator.of.Rare.Case_False": "rare_case_false",
+    "Indicator.of.Rare.Case_True": "rare_case_true",
+    "Diagnostic.means_CITOLOGIA": "diagnostic_method_cytology",
+    "Diagnostic.means_CLÍNICO": "diagnostic_method_clinical",
+    "Diagnostic.means_HISTOLOGIA DA METÁSTASE": "diagnostic_method_metastasis_histology",
+    "Diagnostic.means_HISTOLOGIA DO TUMOR PRIMÁRIO": "diagnostic_method_primary_tumor_histology",
+    "Diagnostic.means_MARCADORES TUMORAIS": "diagnostic_method_tumor_markers",
+    "Diagnostic.means_PESQUISA": "diagnostic_method_research",
+    "Diagnostic.means_SDO": "diagnostic_method_sdo",
+    "Extension_IN SITU": "extension_in_situ",
+    "Extension_LOCALIZADO": "extension_localized",
+    "Extension_METÁSTASE": "extension_metastasis",
+    "Extension_NÃO SE APLICA": "extension_not_applicable",
+    "Laterality_BILATERAL": "laterality_bilateral",
+    "Laterality_DIREITA": "laterality_right",
+    "Laterality_ESQUERDA": "laterality_left",
+    "Laterality_NÃO SE APLICA": "laterality_not_applicable",
+    "Diag_Year": "diagnosis_year",
+    "target_deceased": "deceased",
+}
+
+
+def rename_brazil_columns(df):
+    """Return a Brazil dataframe with English snake_case column names."""
+    return df.rename(columns=BRAZIL_COLUMN_MAP)
