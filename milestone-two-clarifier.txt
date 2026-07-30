@@ -1,0 +1,77 @@
+﻿Milestone Two: Instructions, Clarifications, and Examples
+Hi everyone,
+
+
+As we approach Milestone Two, I want to walk through the guidelines in detail, clear up the questions I anticipate, and give you concrete examples of what strong work looks like. Milestone Two follows the same overall structure as Milestone One, so much of this will feel familiar, but there are a few areas where students lost points last time that I want to make sure we avoid repeating. Please read this post carefully before you begin drafting.
+Formatting 
+Your summary document must be an 8 to 10 page Microsoft Word document, double spaced, in 12 point Times New Roman font, with one inch margins. I want to emphasize the double spacing in particular. On Milestone One, a number of you lost points on formatting, in some cases more than on citations, and formatting is the easiest category in the entire assignment to get right. Before you submit, open your document and confirm all four of these settings. 
+Your appendix, which contains your Jupyter Notebooks from Weeks 8 through 12, does not count toward the page limit. A full link to the GitHub repository holding your notebooks is preferred. It is completely fine, and in fact expected, for some material in your summary, such as graphs, to come directly from your notebooks. That material is the evidence for the claims you make in the summary.
+The Problem Statement
+You still need a statement or description of your chosen project. In most cases, this can be essentially the same as the one you wrote for Milestone One. This section is not where our attention goes during grading. The only reason to substantially revise it is if the modeling you did in the first half of the course changed the direction of your project, or even your dataset. That happens, but it is rare. If nothing has shifted, carry your description forward, make sure it still reads clearly, and move on.
+The Modeling Techniques
+This milestone covers the techniques from Weeks 8 through 11:
+
+
+* K-nearest neighbors, including different distance metrics (Week 8)
+* Gradient boosting (Week 9)
+* K-Means and silhouette score (Week 10)
+* DBSCAN and hierarchical agglomerative clustering (Week 11)
+
+
+You will discuss these through the same breadth and depth structure you used in Milestone One. Please label your sections explicitly. I need to be able to open your document and immediately see which weeks you are covering in breadth and which one or two weeks you have chosen for depth. 
+
+
+What Breadth Means
+
+
+In your breadth section, you are going over how you applied each week's techniques to all of your datasets, not just one of them. For each week, you should cover the technique you used, the reasoning behind your setup, any parameter tuning you did, your results in numerical form, your interpretation of those results, and the evaluation metrics you relied on.
+
+
+These discussions do not need to be exhaustive. This is the breadth section, and it is acceptable for one week to occupy a relatively short passage if that reflects your work honestly. Depth is reserved for the weeks you choose to expand on.
+
+
+One organizational note: the rubric contains separate criteria for overfitting and for metrics and hyperparameter tuning. You may consolidate everything you want to say on those topics inside your breadth discussion, or you may sprinkle those points throughout the document wherever they make organizational sense. Either approach is fine. What matters is that the content is present and easy to locate.
+What Depth Means
+For your one or two depth weeks, you are going far beyond the summary treatment above. You are showing that you genuinely understand the technique, why it behaves the way it does on your data, what you tried, what failed, and what your results actually mean for your project's questions.
+A Worked Example: Breadth Versus Depth
+To make the difference concrete, suppose a student's capstone project is predicting hospital readmission risk from patient visit records, with a second dataset of hospital-level operational statistics.
+
+
+A breadth-level treatment of Week 9 (gradient boosting) might read something like this:
+
+
+"For Week 9, I applied gradient boosting to both datasets. On the readmission dataset, I framed the task as binary classification and used a held-out test set with early stopping to limit overfitting. After tuning the learning rate and tree depth through cross-validation, the model reached an F1 score of 0.71, an improvement over the 0.64 achieved by KNN in Week 8. On the operational dataset, I used gradient boosting for regression on average length of stay, reaching an RMSE of 1.8 days. Feature importance scores indicated that prior admission count and discharge disposition were the strongest predictors of readmission, which aligned with patterns I observed during EDA."
+
+
+Notice what that paragraph does. It names the setup and the reasoning, mentions the tuning, reports numbers, interprets them briefly, and covers both datasets. It does all of that in a handful of sentences. 
+
+
+A depth-level treatment of the same week takes that same material and expands it substantially. Here is an excerpt of what the opening of a depth discussion might look like. 
+
+
+"For my depth discussion, I chose gradient boosting because it produced my strongest results and because its behavior on the readmission dataset raised questions worth investigating. Gradient boosting builds trees one at a time, with each new tree trained to correct the errors of the ones before it. This sequential structure is what makes the model powerful on my data, where readmission risk depends on interactions between features, such as prior admission count combined with discharge disposition, that a single tree or a distance-based method like KNN struggled to capture.
+
+
+Because this same structure makes the model prone to memorizing the training data, I used two safeguards against overfitting. First, I held out 20 percent of patients as a test set that was never touched during tuning. Second, I used early stopping with a validation set. Figure 4 shows the training and validation loss curves. Without early stopping, training loss continued to fall while validation loss began climbing after roughly 180 trees, a clear sign of overfitting. With early stopping, the gap between training F1 (0.78) and test F1 (0.71) narrowed considerably compared to the unregularized run...
+
+
+...The most surprising result was the feature importance ranking. I expected patient age to be a top predictor based on the readmission literature, but it ranked ninth, possibly due to…"
+
+
+Notice the difference in posture. The breadth excerpt reports what was done and what came out. The depth excerpt explains why the technique suits the data, shows overfitting evidence with specific numbers and a figure, and chases down a surprising result. The ellipses mark where the full discussion would continue, including the hyperparameter tuning walkthrough and external sources. The same standard applies whichever weeks you choose. A depth treatment of Week 10, for example, would walk through the full process of selecting k, show the silhouette analysis visually, test whether the clusters are stable under different scaling and feature choices, and interpret each cluster in terms of the project's real-world question.
+
+
+Figures
+You are expected to include 3 to 8 figures supporting your conclusions, placed in the body of the document, not in an appendix. Tables count toward your figure total. A single page should fit a maximum of six images, sized so that the content is clearly visible, and captions must be at least 12 point Times New Roman. You may make figures larger than the reference size, but not smaller. Legibility is the entire point.
+The EDA Discussion
+The rubric asks you to discuss how your Exploratory Data Analysis helped, or did not help, with your modeling. This is a reflection back on the EDA you completed last semester. The question to answer is: how did that earlier exploratory work inform this specific iteration of modeling? Did distributions you observed then shape your choice of distance metric for KNN? Did outliers you identified explain odd clustering behavior in DBSCAN? Honest discussion of where EDA turned out not to be useful is also welcome, as long as it is thoughtful.
+Citations and the AI Appendix
+Citations were a source of lost points on Milestone One, so please take this section seriously. Your citations must include all of your datasets, as well as any documentation you used to help set up this milestone. That includes general industry research and any specific machine learning resources you consulted. You are expected to find external sources beyond the course materials, such as free educational pages, and to share and discuss them with other students through YellowDig. Any consistent citation style is acceptable, whether APA, Chicago, or another format. Minor style differences will not cost you points. The purpose is simply that your grader can locate your sources if needed.
+
+
+Separately, your submission must include an AI appendix clearly stating any use of AI in your work. Include your prompt and how you used its output in your paper. 
+Where to Spend Your Effort
+Finally, look at the rubric weights before you start writing. Depth and breadth are worth 30 points each, which together is 60 percent of your grade. The problem statement is worth 5. Allocate your time and page count accordingly. A polished problem statement attached to a thin modeling discussion will not score well. Thorough, clearly labeled breadth coverage and a genuinely deep treatment of your chosen one or two weeks is where this assignment is won.
+
+
+As always, post questions in the discussion board or reach out directly, and I am happy to clarify anything above. Good luck, and I am looking forward to reading your work.

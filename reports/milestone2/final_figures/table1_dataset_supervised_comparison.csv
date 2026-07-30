@@ -1,0 +1,3 @@
+Dataset,Samples used,Predictors / outcome,KNN headline,GB headline
+Wisconsin,569 (all methods),30; diagnosis=1: 37.3%,ROC .982; F1 .950,ROC .998; PR .997; F1 .951
+Brazil,Full 1.743M; KNN 10k; GB 120k; KM 100k; DB 30k; H 5k,39; deceased=1: 7.0%,ROC .878; recall .252; F1 .479,ROC .958; PR .675; F1 .592; F1 .643 @ .325
