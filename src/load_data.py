@@ -33,6 +33,9 @@ def load_brazil(sample_size = None, random_state = 42, rename_cols = True, drop_
     path = DATA_DIR / "brazil_modeling.csv"
     df = pd.read_csv(path)
 
+    # Death-certificate-only status is target-adjacent and must not enter models.
+    df = df.drop(columns=["Diagnostic.means_SDO"])
+
     if rename_cols:
         df=rename_brazil_columns(df)
         target_col = "deceased"
@@ -42,6 +45,11 @@ def load_brazil(sample_size = None, random_state = 42, rename_cols = True, drop_
     if drop_high_missing:
         drop_col = "diagnosis_year" if rename_cols else "Diag_Year"
         df = df.drop(columns=[drop_col])
+
+    excluded_sdo_columns = {"Diagnostic.means_SDO", "diagnostic_method_sdo"}
+    assert excluded_sdo_columns.isdisjoint(df.columns), (
+        "Death-certificate-only status must be excluded from Brazil model inputs."
+    )
 
     if sample_size is not None:
         df = df.sample(n=sample_size, random_state=random_state)
